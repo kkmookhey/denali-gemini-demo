@@ -9,6 +9,7 @@ metadata:
     denali_demo_path: golden
   annotations:
     run.googleapis.com/ingress: all
+    run.googleapis.com/maxScale: "1"
 spec:
   template:
     metadata:
@@ -16,14 +17,13 @@ spec:
         denali_ai_workload: "true"
         denali_demo_path: golden
       annotations:
-        autoscaling.knative.dev/maxScale: "1"
         run.googleapis.com/startup-cpu-boost: "true"
     spec:
       containerConcurrency: 8
       timeoutSeconds: 45
       serviceAccountName: denali-gemini-demo@vertex-api-502308.iam.gserviceaccount.com
       containers:
-        - image: us-docker.pkg.dev/cloudrun/container/hello
+        - image: us-central1-docker.pkg.dev/vertex-api-502308/cloud-run-source-deploy/denali-gemini-demo@sha256:267566fa6e6ae2d6590d2ed34ba1da51ae706e25603f9edbf29c7187c416cbda
           ports:
             - name: http1
               containerPort: 8080

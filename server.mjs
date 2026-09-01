@@ -151,7 +151,7 @@ const server = http.createServer(async (request, response) => {
     response.writeHead(200, secureHeaders("text/html; charset=utf-8"));
     return response.end(page);
   }
-  if (request.method === "GET" && url.pathname === "/healthz") {
+  if (request.method === "GET" && ["/health", "/healthz"].includes(url.pathname)) {
     return sendJson(response, 200, { status: "ok", provider: "vertex-ai", model, started_at: startedAt });
   }
   if (request.method === "POST" && url.pathname === "/api/generate") {

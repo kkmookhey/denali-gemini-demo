@@ -29,5 +29,5 @@ PORT=8080 GOOGLE_CLOUD_PROJECT=vertex-api-502308 VERTEX_LOCATION=us-central1 \
   VERTEX_MODEL_ID=gemini-2.5-flash npm start
 ```
 
-`GET /healthz` never calls Vertex AI. `POST /api/generate` accepts at most 600 characters,
+`GET /health` never calls Vertex AI. `POST /api/generate` accepts at most 600 characters,
 uses a small response budget, and is guarded by a per-instance request limit.
